@@ -64,7 +64,7 @@ export default function PedidoBifano() {
       .filter(([_, q]) => q > 0)
       .map(([item, q]) => `${item} — ${q}x`)
       .join('%0A');
-    const url = `https://wa.me/553172583941?text=Olá!%20Quero%20fazer%20um%20pedido:%0A${resumo}`;
+    const url = `https://wa.me/553172583941?text=Pedido:%0A${resumo}`;
     window.open(url, '_blank');
   };
 
