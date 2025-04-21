@@ -2,9 +2,6 @@ import React from 'react';
 import { useState } from 'react';
 
 const produtos = [
-  // ...seus dados
-];
-
   {
     categoria: 'Menus',
     itens: [
@@ -51,6 +48,7 @@ const produtos = [
     ]
   }
 ];
+
 
 export default function PedidoBifano() {
   const [quantidades, setQuantidades] = useState({});
