@@ -61,9 +61,9 @@ export default function PedidoBifano() {
   const montarMensagem = () => {
     const resumo = Object.entries(quantidades)
       .filter(([_, q]) => q > 0)
-      .map(([item, q]) => `${item} — ${q}x`)
+      .map(([item, q]) => \`\${item} — \${q}x\`)
       .join('%0A');
-    const url = `https://wa.me/351912345678?text=Olá!%20Quero%20fazer%20um%20pedido:%0A${resumo}`;
+    const url = \`https://wa.me/351912345678?text=Olá!%20Quero%20fazer%20um%20pedido:%0A\${resumo}\`;
     window.open(url, '_blank');
   };
 
