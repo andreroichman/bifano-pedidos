@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 const produtos = [
   {
@@ -49,7 +48,6 @@ const produtos = [
   }
 ];
 
-
 export default function PedidoBifano() {
   const [quantidades, setQuantidades] = useState({});
 
@@ -63,15 +61,16 @@ export default function PedidoBifano() {
   const montarMensagem = () => {
     const resumo = Object.entries(quantidades)
       .filter(([_, q]) => q > 0)
-      .map(([item, q]) => \`\${item} — \${q}x\`)
+      .map(([item, q]) => `${item} — ${q}x`)
       .join('%0A');
-    const url = \`https://wa.me/351912345678?text=Olá!%20Quero%20fazer%20um%20pedido:%0A\${resumo}\`;
+    const url = `https://wa.me/351912345678?text=Olá!%20Quero%20fazer%20um%20pedido:%0A${resumo}`;
     window.open(url, '_blank');
   };
 
   return (
     <div className="p-4 space-y-6 max-w-2xl mx-auto">
       <h1 className="text-2xl font-bold">🍽️ Fazer Encomenda - Tasquinhas Bifano</h1>
+
       {produtos.map((categoria) => (
         <div key={categoria.categoria}>
           <h2 className="text-xl font-semibold mb-2">{categoria.categoria}</h2>
@@ -89,14 +88,18 @@ export default function PedidoBifano() {
           </div>
         </div>
       ))}
+
       <div>
         <h2 className="text-lg font-semibold">📋 Resumo do Pedido</h2>
         <ul className="list-disc pl-5">
-          {Object.entries(quantidades).filter(([_, q]) => q > 0).map(([item, q]) => (
-            <li key={item}>{item} — {q}x</li>
-          ))}
+          {Object.entries(quantidades)
+            .filter(([_, q]) => q > 0)
+            .map(([item, q]) => (
+              <li key={item}>{item} — {q}x</li>
+            ))}
         </ul>
       </div>
+
       <button
         onClick={montarMensagem}
         className="mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition"
